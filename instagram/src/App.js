@@ -7,17 +7,26 @@ import SearchBar from './components/SearchBar/SearchBar';
 import dummyData from './dummy-data';
 
 class App extends Component {
+  constructor() {
+    super();
+    this.state = {
+      posts: dummyData,
+    };
+  }
   render() {
+    // console.log(this.state.posts);
+
     return (
+
       <div className="App">
         <header className="App-header">
           this is div.App.App-header
-        </header>
-
         <SearchBar />
-        <PostContainer />
+        </header>
+        <PostContainer posts={this.state.posts}/>
+        
 
-      </div>
+      </div> //end App
     );
   }
 }

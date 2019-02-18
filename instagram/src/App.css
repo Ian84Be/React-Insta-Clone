@@ -14,7 +14,7 @@
 
 
 .App {
-  border:1px solid red;
+  /* border:1px solid red; */
   background-color: #282c34;
   margin: 0 auto;
   max-width:80%;
@@ -30,6 +30,4 @@
 .App-header {
   color:red;
 }
-
-
 
