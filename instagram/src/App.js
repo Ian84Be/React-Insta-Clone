@@ -20,8 +20,15 @@ class App extends Component {
 
       <div className="App">
         <header className="App-header">
-          instagrang
+        <i class="fab fa-instagram fa-2x"></i>
+        <h1>INSTAGRANG</h1>
         <SearchBar />
+
+        <div className="nav-icons">
+        <i class="far fa-compass"></i>
+        <i class="far fa-heart"></i>
+        <i class="far fa-user"></i>
+        </div>
         </header>
 
         <PostContainer posts={this.state.posts}/>

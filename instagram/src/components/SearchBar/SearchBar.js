@@ -3,7 +3,9 @@ import './SearchBar.css';
 
 const SearchBar = () => {
     return ( 
-        <div>this is the serachababrabrba</div>
+        <div className="search">
+            <input type="text" value="" placeholder="search..."></input>
+        </div>
      );
 }
  

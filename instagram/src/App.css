@@ -15,7 +15,7 @@
 
 .App {
   /* border:1px solid red; */
-  background-color: #282c34;
+  /* background-color: #282c34; */
   margin: 0 auto;
   max-width:80%;
 
@@ -24,10 +24,22 @@
   align-items: center;
   justify-content: center;
 
-  color: white;
 }
 
 .App-header {
-  color:red;
+  /* border:1px solid magenta; */
+  background:white;
+  width:100%;
+  max-width:640px;
+  display:flex;
+  flex-wrap: wrap;
+  align-items:center;
+  justify-content: space-between;
+  margin:12px 8px;
+  /* padding:0 8px; */
+}
+
+.App-header i, .App-header h1, .App-header input {
+  margin:12px 8px;
 }
 
