@@ -1,0 +1,17 @@
+.comment {
+    /* border:1px solid cyan; */
+}
+
+.comment p {
+    /* border:1px solid red; */
+    color:black;
+    font-size:0.75rem;
+    /* display:flex; */
+    /* align-items:center; */
+    margin:6px 8px;
+    padding:0;
+}
+
+.comment .strong {
+    font-weight:bold;
+}

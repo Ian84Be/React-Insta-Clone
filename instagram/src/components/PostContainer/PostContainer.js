@@ -7,15 +7,14 @@ const PostContainer = (props) => {
 
         props.posts.map(post => {
             return (
-                <div className="post">
+                <div className="post" key={post.timestamp}>
                     <header>
                         <img className="thumbnail" src={post.thumbnailUrl} alt="y"/>
-                        <h1>{post.username}</h1>
+                        <h2>{post.username}</h2>
                     </header>
 
                     <img src={post.imageUrl} alt="x" />
-                    <h2>{post.likes} likes</h2>
-
+                    <h3>{post.likes} likes</h3>
                     <CommentSection comments={post.comments} />
                     <div className="time-stamp">{post.timestamp}</div>
                 </div> //end post

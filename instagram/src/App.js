@@ -20,12 +20,11 @@ class App extends Component {
 
       <div className="App">
         <header className="App-header">
-          this is div.App.App-header
+          instagrang
         <SearchBar />
         </header>
-        <PostContainer posts={this.state.posts}/>
-        
 
+        <PostContainer posts={this.state.posts}/>
       </div> //end App
     );
   }
