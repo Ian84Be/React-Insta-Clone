@@ -13,7 +13,7 @@ const SearchBar = (props) => {
                 onChange={props.onChange}
                 value={props.search}
                 placeholder="search..."
-            />
+            required/>
 
             <div className="nav-icons">
                 <i className="far fa-compass"></i>

@@ -1,41 +1,46 @@
-import React from 'react';
+import React, { Component } from 'react';
 import propTypes from 'prop-types';
 
 import './PostContainer.scss';
 import CommentSection from '../CommentSection/CommentSection';
 
-const PostContainer = (props) => {
-    return (
-
-        props.posts.map(post => {
-            return (
-                <div className="post" key={post.timestamp}>
-                    <header>
-                        <img className="thumbnail" src={post.thumbnailUrl} alt="y"/>
-                        <h2>{post.username}</h2>
-                    </header>
-
-                    <img src={post.imageUrl} alt="x" />
-                    <div className="post-icons">
-                    <i className="far fa-heart"></i>
-                    <i className="far fa-comment"></i>
-                    </div>
-                    <h3>{post.likes} likes</h3>
-                    <CommentSection
-                        comments={post.comments}
-                        myName={props.myName}
-                        newComment={post.newComment}
-                        onChange={props.onChange}
-                        onClick={props.onClick}
-                        onSubmit={props.onSubmit}
-                        />
-                    <div className="time-stamp">{post.timestamp}</div>
-                </div> //end post
-            )
-        })
-    )
+class PostContainer extends Component {
+    constructor(props) {
+        super(props);
+        this.props = props;
+        this.state = {
+        }
+    }
+    render() { 
+        return (
+            this.props.posts.map(post => {
+                return (
+                    <div className="post" key={post.timestamp}>
+                        <header>
+                            <img className="thumbnail" src={post.thumbnailUrl} alt="y"/>
+                            <h2>{post.username}</h2>
+                        </header>
+    
+                        <img src={post.imageUrl} alt="x" />
+                        
+                        
+                        <CommentSection
+                            comments={post.comments}
+                            likes={post.likes}
+                            myName={this.props.myName}
+                            newComment={post.newComment}
+                            onChange={this.props.onChange}
+                            onClick={this.props.onClick}
+                            onSubmit={this.props.onSubmit}
+                            />
+                        <div className="time-stamp">{post.timestamp}</div>
+                    </div> //end post
+                )
+            })
+        )
+    }
 }
-
+ 
 PostContainer.propTypes = {
     username: propTypes.string.isRequired,
     imageUrl: propTypes.string.isRequired,
