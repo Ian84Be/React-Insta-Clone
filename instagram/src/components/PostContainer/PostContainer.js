@@ -23,8 +23,11 @@ const PostContainer = (props) => {
                     <h3>{post.likes} likes</h3>
                     <CommentSection
                         comments={post.comments}
+                        myName={props.myName}
                         newComment={post.newComment}
                         onChange={props.onChange}
+                        onClick={props.onClick}
+                        onSubmit={props.onSubmit}
                         />
                     <div className="time-stamp">{post.timestamp}</div>
                 </div> //end post

@@ -8,25 +8,13 @@ import dummyData from './dummy-data';
 
 class App extends Component {
     state = {
-      newComment: '',
       newSearch: '',
       posts: [],
-      doggos:[],
+      myName: 'dummyUser',
     };
 
   componentDidMount() {
     this.setState({posts: dummyData});
-
-    fetch('https://dog.ceo/api/breed/malinois/images')
-      .then(res => res.json())
-      .then(dogs => this.setState({ doggos: dogs.message }))
-      .catch(err => console.log('noooo'));
-  }
-
-  formHandler = e => {
-    this.setState({
-      [e.target.name]: e.target.value,
-    })
   }
 
   render() {
@@ -37,11 +25,11 @@ class App extends Component {
         <SearchBar
           onChange={this.formHandler}
           search={this.state.search}
+          myName={this.state.myName}
           />
 
         <PostContainer
-          newComment={this.state.newComment}
-          onChange={this.formHandler}
+          myName={this.state.myName}
           posts={this.state.posts}
           />
 
