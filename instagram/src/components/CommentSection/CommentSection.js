@@ -23,9 +23,6 @@ class CommentSection extends Component {
 
     addComment = e => {
         e.preventDefault();
-        e.stopPropagation();
-        console.log(this.state.myName);
-        console.log(this.state.newComment);
         let myComment = {
             text: this.state.newComment,
             username: this.state.myName
@@ -45,12 +42,14 @@ class CommentSection extends Component {
     render() {
         return (
             <div className="comment-section">
+
                 <div className="post-icons">
                     <i className="far fa-heart" onClick={this.addLike}></i>
                     <i className="far fa-comment"></i>
                 </div>
 
                 <h3>{this.state.likes} likes</h3>
+
                 {this.state.comments.map((comment, index) => {
                     return (
                         <div className="comment" key={index}>
@@ -59,18 +58,18 @@ class CommentSection extends Component {
                         </div>
                     )
                 })}
-                <div className="add-comment">
-                    <form onSubmit={this.addComment}>
-                        <input
-                            name="newComment"
-                            onChange={this.formHandler}
-                            placeholder="add a comment..."
-                            type="text"
-                            value={this.state.newComment}
-                            required />
-                    </form>
-                </div>
-            </div>
+
+                <form onSubmit={this.addComment}>
+                    <input
+                        name="newComment"
+                        onChange={this.formHandler}
+                        placeholder="add a comment..."
+                        type="text"
+                        value={this.state.newComment}
+                        required />
+                </form>
+
+            </div> // end comment-section
         );
     }
 

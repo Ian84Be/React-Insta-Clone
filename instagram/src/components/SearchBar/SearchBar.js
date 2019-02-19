@@ -11,7 +11,6 @@ const SearchBar = (props) => {
             <input type="text"
                 name="newSearch"
                 onChange={props.onChange}
-                value={props.search}
                 placeholder="search..."
             required/>
 

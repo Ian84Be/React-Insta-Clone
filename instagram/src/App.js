@@ -8,7 +8,7 @@ import dummyData from './dummy-data';
 
 class App extends Component {
     state = {
-      newSearch: '',
+      filteredPosts: [],
       posts: [],
       myName: 'dummyUser',
     };
@@ -17,19 +17,27 @@ class App extends Component {
     this.setState({posts: dummyData});
   }
 
+  searchHandler = e => {
+    let posts = this.state.posts.filter(post => post.username.includes(e.target.value));
+    this.setState({filteredPosts: posts});
+  }
+
   render() {
     return (
       <div className="App">
         
         <SearchBar
-          onChange={this.formHandler}
-          search={this.state.search}
+          onChange={this.searchHandler}
           myName={this.state.myName}
           />
 
         <PostContainer
           myName={this.state.myName}
-          posts={this.state.posts}
+          posts={
+            this.state.filteredPosts.length > 0
+              ? this.state.filteredPosts
+              : this.state.posts
+          }
           />
 
       </div> //end App
