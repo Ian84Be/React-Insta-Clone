@@ -8,21 +8,28 @@
     max-width:640px;
     margin:12px 8px;
     width:100%;
-  }
-  
-  .nav i, .nav h1 {
-    /* border:1px solid cyan; */
+
+  h1 {
     margin:12px 8px;
   }
 
-  .nav i:hover, .nav input:hover {
-      cursor: pointer;
+  i {
+    margin:12px 8px;
+    &:hover {
       color:magenta;
+      cursor: pointer;
+    }
   }
 
-  .nav input {
+  input {
     border:1px solid black;
     margin:12px 8px;
     outline:none;
     padding:6px;
+    &:hover {
+      background:cyan;
+      color:magenta;
+      cursor: pointer;
+    }
+  }
 }
