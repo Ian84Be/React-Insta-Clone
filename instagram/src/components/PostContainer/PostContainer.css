@@ -9,14 +9,14 @@
 }
 
 .post header {
-    display:flex;
     align-items:center;
+    display:flex;
     margin:12px 8px;
 }
 
 .post h2, .post h3 {
-    font-size: 0.75rem;
     color:black;
+    font-size: 0.75rem;
     margin:0 8px;
 }
 
@@ -25,12 +25,16 @@
 }
 
 .post img.thumbnail {
-    width:24px;
     border-radius:50%;
+    width:24px;
 }
 
 .post i {
     margin:12px 8px;
+}
+
+.post i:hover {
+    cursor: pointer;
 }
 
 .post .time-stamp {

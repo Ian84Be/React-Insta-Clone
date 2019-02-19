@@ -1,4 +1,26 @@
-.App-header .search input {
+.nav {
+    align-items:center;
+    background:white;
+    /* border:1px solid magenta; */
+    display:flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    max-width:640px;
+    margin:12px 8px;
+    width:100%;
+  }
+  
+  .nav i, .nav h1 {
+    /* border:1px solid cyan; */
+    margin:12px 8px;
+  }
+
+  .nav i:hover, .nav input:hover {
+      cursor: pointer;
+      color:magenta;
+  }
+
+  .nav input {
     border:1px solid black;
     margin:12px 8px;
     outline:none;

@@ -7,13 +7,20 @@ import SearchBar from './components/SearchBar/SearchBar';
 import dummyData from './dummy-data';
 
 class App extends Component {
-  constructor() {
-    super();
-    this.state = {
+    state = {
       newComment: '',
-      posts: dummyData,
       newSearch: '',
+      posts: [],
+      doggos:[],
     };
+
+  componentDidMount() {
+    this.setState({posts: dummyData});
+
+    fetch('https://dog.ceo/api/breed/malinois/images')
+      .then(res => res.json())
+      .then(dogs => this.setState({ doggos: dogs.message }))
+      .catch(err => console.log('noooo'));
   }
 
   formHandler = e => {
@@ -26,29 +33,20 @@ class App extends Component {
     return (
 
       <div className="App">
-        <header className="App-header">
-        <i className="fab fa-instagram fa-2x"></i>
-        <h1>INSTAGRANG</h1>
+        
         <SearchBar
           onChange={this.formHandler}
           search={this.state.search}
           />
-
-        <div className="nav-icons">
-        <i className="far fa-compass"></i>
-        <i className="far fa-heart"></i>
-        <i className="far fa-user"></i>
-        </div>
-        </header>
 
         <PostContainer
           newComment={this.state.newComment}
           onChange={this.formHandler}
           posts={this.state.posts}
           />
+          
       </div> //end App
     );
   }
 }
-
 export default App;
