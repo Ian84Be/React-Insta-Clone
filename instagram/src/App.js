@@ -10,28 +10,42 @@ class App extends Component {
   constructor() {
     super();
     this.state = {
+      newComment: '',
       posts: dummyData,
+      newSearch: '',
     };
   }
-  render() {
-    // console.log(this.state.posts);
 
+  formHandler = e => {
+    this.setState({
+      [e.target.name]: e.target.value,
+    })
+  }
+
+  render() {
     return (
 
       <div className="App">
         <header className="App-header">
-        <i class="fab fa-instagram fa-2x"></i>
+        <i className="fab fa-instagram fa-2x"></i>
         <h1>INSTAGRANG</h1>
-        <SearchBar />
+        <SearchBar
+          onChange={this.formHandler}
+          search={this.state.search}
+          />
 
         <div className="nav-icons">
-        <i class="far fa-compass"></i>
-        <i class="far fa-heart"></i>
-        <i class="far fa-user"></i>
+        <i className="far fa-compass"></i>
+        <i className="far fa-heart"></i>
+        <i className="far fa-user"></i>
         </div>
         </header>
 
-        <PostContainer posts={this.state.posts}/>
+        <PostContainer
+          newComment={this.state.newComment}
+          onChange={this.formHandler}
+          posts={this.state.posts}
+          />
       </div> //end App
     );
   }

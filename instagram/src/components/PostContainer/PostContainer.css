@@ -4,6 +4,8 @@
     margin:12px 0;
     padding-bottom:12px;
     line-height:1.5;
+    display: flex;
+    flex-direction: column;
 }
 
 .post header {
@@ -25,6 +27,10 @@
 .post img.thumbnail {
     width:24px;
     border-radius:50%;
+}
+
+.post i {
+    margin:12px 8px;
 }
 
 .post .time-stamp {

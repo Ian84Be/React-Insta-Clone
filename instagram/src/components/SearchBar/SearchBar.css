@@ -1,0 +1,6 @@
+.App-header .search input {
+    border:1px solid black;
+    margin:12px 8px;
+    outline:none;
+    padding:6px;
+}
