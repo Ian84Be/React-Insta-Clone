@@ -8,10 +8,12 @@ const SearchBar = (props) => {
             <i className="fab fa-instagram fa-2x"></i>
             <h1>INSTAGRANG</h1>
 
-            <input type="text"
+            <input
+                className="fa"
                 name="newSearch"
                 onChange={props.onChange}
-                placeholder="search..."
+                placeholder="&#xf002;"
+                type="text"
             required/>
 
             <div className="nav-icons">

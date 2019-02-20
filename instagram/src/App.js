@@ -1,10 +1,29 @@
 import React, { Component } from 'react';
 import './App.scss';
 
+import LoginPage from './components/LoginPage/LoginPage';
 import PostContainer from './components/PostContainer/PostContainer';
 import SearchBar from './components/SearchBar/SearchBar';
 
 import dummyData from './dummy-data';
+
+const withLogin = LoginPage => PostContainer => props => {
+  if (localStorage.getItem('user')) {
+    return (
+      <PostContainer
+      myName={this.state.myName}
+      posts={
+        this.state.filteredPosts.length > 0
+        ? this.state.filteredPosts
+        : this.state.posts
+      }
+      />
+    ) 
+  }
+  else {
+    return <LoginPage />
+  }
+}
 
 class App extends Component {
     state = {
@@ -16,6 +35,8 @@ class App extends Component {
   componentDidMount() {
     this.setState({posts: dummyData});
   }
+
+
 
   searchHandler = e => {
     let posts = this.state.posts.filter(post => post.username.includes(e.target.value));

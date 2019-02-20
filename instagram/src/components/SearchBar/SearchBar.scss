@@ -10,6 +10,7 @@
     width:100%;
 
   h1 {
+    font-size:2rem;
     margin:12px 8px;
   }
 
@@ -19,6 +20,7 @@
 
   input {
     border:1px solid black;
+    // font-size:0.75rem;
     margin:12px 8px;
     max-width:35%;
     outline:none;
@@ -44,6 +46,7 @@
 
     strong {
       font-size:0.75rem;
+      font-weight:bold;
       margin:12px 8px 12px 0;
       &:hover {
         color:magenta;

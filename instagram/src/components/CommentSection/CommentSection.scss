@@ -1,44 +1,41 @@
 .comment-section {
     // border:1px solid red;
-    
     .comment {
         p {
             /* align-items:center; */
-            
             color:black;
             /* display:flex; */
             font-size:0.75rem;
             margin:6px 8px;
             padding:0;
         }
-        
-        .strong {
+
+        strong {
             font-weight:bold;
+            font-size:0.75rem;
         }
     }
-    
 
-        form {
-            border-top:1px solid grey;
-            // max-width:640px;
-            display:flex;
-            margin:6px 8px;
-            // width:100%;
-        }
+    form {
+        border-top:1px solid grey;
+        // max-width:640px;
+        display:flex;
+        margin:6px 8px;
+        // width:100%;
+    }
         
-        input[type=text] {
-            border:0;
-            // border:1px solid red;
-            // max-width:640px;
-            outline:none;
-            padding:6px 0;
-            width:100%;
+    input[type=text] {
+        border:0;
+        // border:1px solid red;
+        // max-width:640px;
+        outline:none;
+        padding:6px 0;
+        width:100%;
             
-            &:hover {
-                background:cyan;
-                color:magenta;
-                cursor: pointer;
+        &:hover {
+            background:cyan;
+            color:magenta;
+            cursor: pointer;
             }
-        }
-    
+    }
 }
