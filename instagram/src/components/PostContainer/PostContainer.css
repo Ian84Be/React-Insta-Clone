@@ -1,0 +1,40 @@
+.post {
+    /* border:1px solid cyan; */
+    background:white;
+    margin:12px 0;
+    padding-bottom:12px;
+    line-height:1.5;
+    display: flex;
+    flex-direction: column;
+}
+
+.post header {
+    display:flex;
+    align-items:center;
+    margin:12px 8px;
+}
+
+.post h2, .post h3 {
+    font-size: 0.75rem;
+    color:black;
+    margin:0 8px;
+}
+
+.post img {
+    max-width:100%;
+}
+
+.post img.thumbnail {
+    width:24px;
+    border-radius:50%;
+}
+
+.post i {
+    margin:12px 8px;
+}
+
+.post .time-stamp {
+    color:grey;
+    font-size:0.33rem;
+    margin:0 8px;
+}

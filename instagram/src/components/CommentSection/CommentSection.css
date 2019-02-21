@@ -1,0 +1,29 @@
+.comment p {
+    /* align-items:center; */
+    /* border:1px solid red; */
+    color:black;
+    /* display:flex; */
+    font-size:0.75rem;
+    margin:6px 8px;
+    padding:0;
+}
+
+.comment .strong {
+    font-weight:bold;
+}
+
+.add-comment {
+    border-top:1px solid grey;
+    display:flex;
+    margin:6px 8px;
+}
+
+.add-comment input[type=text] {
+    border:0;
+    margin:6px 0;
+    max-width:640px;
+    outline:none;
+    padding:6px 0;
+    width:100%;
+}
+
