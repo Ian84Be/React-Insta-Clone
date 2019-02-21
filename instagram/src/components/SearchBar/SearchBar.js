@@ -12,14 +12,17 @@ const SearchBar = (props) => {
                 className="fa"
                 name="newSearch"
                 onChange={props.onChange}
-                placeholder="&#xf002;"
+                placeholder="&#xf002; search"
                 type="text"
             required/>
 
             <div className="nav-icons">
-                <i className="far fa-compass"></i>
-                <i className="far fa-heart"></i>
-                <strong><i className="far fa-user"></i>{props.myName}</strong>
+                {/* <i className="far fa-compass"></i>
+                <i className="far fa-heart"></i> */}
+                <div className="logout" onClick={props.logOut}>
+                    <i className="far fa-user">{props.myName}</i>
+                    <small>(logout)</small>
+                </div>
             </div>
             
         </header>

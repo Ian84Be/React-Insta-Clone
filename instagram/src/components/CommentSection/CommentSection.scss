@@ -17,7 +17,7 @@
     }
 
     form {
-        border-top:1px solid grey;
+        border-top:2px dashed black;
         // max-width:640px;
         display:flex;
         margin:6px 8px;
@@ -36,6 +36,6 @@
             background:cyan;
             color:magenta;
             cursor: pointer;
-            }
+        }
     }
 }
