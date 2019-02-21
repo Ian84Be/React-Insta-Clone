@@ -1,7 +1,53 @@
 import React, { Component } from 'react';
 import propTypes from 'prop-types';
+import styled from 'styled-components';
 
-import './CommentSection.scss';
+const Wrapper = styled.div`
+
+        h3 {
+            font-size:0.75rem;
+            margin: 0 8px;
+        }
+
+        .comment {
+            border:1px solid ${props => props.theme.color};
+            border-bottom:4px solid ${props => props.theme.color};;
+            border-left:0;
+            border-radius: ${props => props.theme.borderRadiusAlt};
+            font-size:0.75rem;
+            margin:${props => props.theme.margin};
+            padding:0;
+
+            strong {
+            background: ${props => props.theme.color};
+            border-radius: ${props => props.theme.borderRadius};
+            color: ${props => props.theme.background};
+            font-weight:bold;
+            font-size:0.75rem;
+            padding:6px;;
+            }
+        }
+
+    form {
+        border-top:1px solid ${props => props.theme.color};
+        display:flex;
+    }
+`;
+
+const Input = styled.input`
+    border:1px solid ${props => props.theme.color};
+    border-radius: ${props => props.theme.borderRadius};
+    color: ${props => props.theme.background};
+    font-size:0.75rem;
+    margin:${props => props.theme.margin};
+    outline:none;
+    padding:6px 4px;
+    width:100%;
+    &:hover {
+      background: ${props => props.theme.color};
+      cursor: pointer;
+    }
+`;
 
 class CommentSection extends Component {
     constructor(props) {
@@ -41,26 +87,23 @@ class CommentSection extends Component {
 
     render() {
         return (
-            <div className="comment-section">
-
-                <div className="post-icons">
-                    <i className="far fa-heart" onClick={this.addLike}></i>
-                    <i className="far fa-comment"></i>
-                </div>
+            <Wrapper>
+                <i className="far fa-heart" onClick={this.addLike}></i>
+                {/* <i className="far fa-comment"></i> */}
 
                 <h3>{this.state.likes} likes</h3>
 
                 {this.state.comments.map((comment, index) => {
                     return (
                         <div className="comment" key={index}>
-                            <p><strong>{comment.username}</strong>
-                                &nbsp;{comment.text}</p>
+                            <strong>{comment.username}</strong>
+                                &nbsp;{comment.text}
                         </div>
                     )
                 })}
 
                 <form onSubmit={this.addComment}>
-                    <input
+                    <Input
                         name="newComment"
                         onChange={this.formHandler}
                         placeholder="add a comment..."
@@ -69,7 +112,7 @@ class CommentSection extends Component {
                         required />
                 </form>
 
-            </div> // end comment-section
+            </Wrapper>
         );
     }
 
