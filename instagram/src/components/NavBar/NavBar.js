@@ -1,7 +1,8 @@
 import React from 'react';
-import './SearchBar.scss';
+import styled from 'styled-components';
+import './NavBar.scss';
 
-const SearchBar = (props) => {
+const NavBar = (props) => {
     return (
 
         <header className="nav">
@@ -29,4 +30,4 @@ const SearchBar = (props) => {
     );
 }
 
-export default SearchBar;
+export default NavBar;

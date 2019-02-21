@@ -3,7 +3,7 @@ import './App.scss';
 
 import LoginPage from './components/LoginPage/LoginPage';
 import PostContainer from './components/PostContainer/PostContainer';
-import SearchBar from './components/SearchBar/SearchBar';
+import NavBar from './components/NavBar/NavBar';
 import dummyData from './dummy-data';
 
 class App extends Component {
@@ -55,7 +55,7 @@ class App extends Component {
         {/* if user is logged in, return the app, otherwise return login page */}
         {localStorage.getItem('user') ?
           <>
-            <SearchBar
+            <NavBar
               logOut={this.logOut}
               myName={this.state.myName}
               onChange={this.searchHandler}
