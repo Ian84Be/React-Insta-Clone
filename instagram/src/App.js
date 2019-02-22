@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import './App.css';
+import './App.scss';
 
 import PostContainer from './components/PostContainer/PostContainer';
 import SearchBar from './components/SearchBar/SearchBar';
@@ -7,48 +7,41 @@ import SearchBar from './components/SearchBar/SearchBar';
 import dummyData from './dummy-data';
 
 class App extends Component {
-  constructor() {
-    super();
-    this.state = {
-      newComment: '',
-      posts: dummyData,
-      newSearch: '',
+    state = {
+      filteredPosts: [],
+      posts: [],
+      myName: 'dummyUser',
     };
+
+  componentDidMount() {
+    this.setState({posts: dummyData});
   }
 
-  formHandler = e => {
-    this.setState({
-      [e.target.name]: e.target.value,
-    })
+  searchHandler = e => {
+    let posts = this.state.posts.filter(post => post.username.includes(e.target.value));
+    this.setState({filteredPosts: posts});
   }
 
   render() {
     return (
-
       <div className="App">
-        <header className="App-header">
-        <i className="fab fa-instagram fa-2x"></i>
-        <h1>INSTAGRANG</h1>
+        
         <SearchBar
-          onChange={this.formHandler}
-          search={this.state.search}
+          onChange={this.searchHandler}
+          myName={this.state.myName}
           />
-
-        <div className="nav-icons">
-        <i className="far fa-compass"></i>
-        <i className="far fa-heart"></i>
-        <i className="far fa-user"></i>
-        </div>
-        </header>
 
         <PostContainer
-          newComment={this.state.newComment}
-          onChange={this.formHandler}
-          posts={this.state.posts}
+          myName={this.state.myName}
+          posts={
+            this.state.filteredPosts.length > 0
+              ? this.state.filteredPosts
+              : this.state.posts
+          }
           />
+
       </div> //end App
     );
   }
 }
-
 export default App;

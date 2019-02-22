@@ -1,0 +1,57 @@
+.nav {
+    align-items:center;
+    background:white;
+    // border:1px solid magenta;
+    display:flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    max-width:640px;
+    margin:12px 8px;
+    width:100%;
+
+  h1 {
+    margin:12px 8px;
+  }
+
+  i {
+    margin:12px 8px;
+  }
+
+  input {
+    border:1px solid black;
+    margin:12px 8px;
+    max-width:35%;
+    outline:none;
+    padding:6px;
+    &:hover {
+      background:cyan;
+      color:magenta;
+      cursor: pointer;
+    }
+  }
+
+  .nav-icons {
+    align-items: center;
+    display: flex;
+
+    i {
+      margin:12px 4px;
+      &:hover {
+        color:magenta;
+        cursor: pointer;
+      }
+    }
+
+    strong {
+      font-size:0.75rem;
+      margin:12px 8px 12px 0;
+      &:hover {
+        color:magenta;
+        cursor: pointer;
+      }
+    }
+  }
+
+  
+
+}
