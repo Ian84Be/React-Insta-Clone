@@ -1,10 +1,37 @@
 import React, { Component } from 'react';
-import './App.scss';
+import styled, {ThemeProvider} from 'styled-components';
 
 import LoginPage from './components/LoginPage/LoginPage';
 import PostContainer from './components/PostContainer/PostContainer';
-import SearchBar from './components/SearchBar/SearchBar';
+import NavBar from './components/NavBar/NavBar';
 import dummyData from './dummy-data';
+
+const mainTheme = {
+  background: 'palevioletred',
+  borderRadius: '0 0 0 4px',
+  borderRadiusAlt: '0 4px 0 0',
+  boxShadow: '4px 6px black',
+  color: 'papayawhip',
+  elementBorder: '1px solid black',
+  icoHover: 'black',
+  lineHeight: '1.75',
+  margin: '12px 8px',
+  maxWidth: '640px',
+  textShadow: '1px 2px black',
+};
+
+const AppWrapper = styled.div`
+  align-items: center;
+  background: papayawhip;
+  /* border:1px solid red; */
+  color: papayawhip;
+  display: flex;
+  flex-direction: column;
+  font-family: 'Source Code Pro', monospace;
+  justify-content: center;
+  margin: 0 auto;
+  max-width:80%;
+`;
 
 class App extends Component {
   state = {
@@ -51,30 +78,36 @@ class App extends Component {
 
   render() {
     return (
-      <div className="App">
+      <AppWrapper>
         {/* if user is logged in, return the app, otherwise return login page */}
         {localStorage.getItem('user') ?
           <>
-            <SearchBar
+          <ThemeProvider theme={mainTheme}>
+            <NavBar
               logOut={this.logOut}
               myName={this.state.myName}
               onChange={this.searchHandler}
               onMouseOver={this.onMouseOver}
-            />
+              />
+              </ThemeProvider>
+
+              <ThemeProvider theme={mainTheme}>
             <PostContainer
               myName={this.state.myName}
               posts={
                 this.state.filteredPosts.length > 0
-                  ? this.state.filteredPosts
-                  : this.state.posts
+                ? this.state.filteredPosts
+                : this.state.posts
               } />
+              </ThemeProvider>
           </>
-          : <LoginPage
+          : <ThemeProvider theme={mainTheme}>
+          <LoginPage
             logIn={this.logIn}
             onChange={this.changeHandler}
             value={this.state.myName}
-          />}
-      </div> //end App
+          /></ThemeProvider>}
+      </AppWrapper>
     );
   }
 }

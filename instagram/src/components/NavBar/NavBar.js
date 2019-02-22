@@ -1,8 +1,7 @@
 import React from 'react';
-// import './LoginPage.scss';
 import styled from 'styled-components';
 
-const Wrapper = styled.header`
+const NavWrapper = styled.header`
     align-items:center;
     background: ${props => props.theme.background};
     border: ${props => props.theme.elementBorder};
@@ -21,13 +20,13 @@ const Wrapper = styled.header`
     }
 `;
 
-const H1 = styled.h1`
+const NavH1 = styled.h1`
     font-size:2rem;
     margin:${props => props.theme.margin};
     text-shadow: ${props => props.theme.textShadow};
 `;
 
-const Input = styled.input`
+const NavInput = styled.input`
     border:1px solid ${props => props.theme.color};
     border-radius: ${props => props.theme.borderRadius}
     color: ${props => props.theme.background};
@@ -41,41 +40,60 @@ const Input = styled.input`
     }
 `;
 
-const Button = styled.button`
-    background: ${props => props.theme.background};
-    border:1px solid ${props => props.theme.color};
-    border-radius: ${props => props.theme.borderRadius};
-    color: ${props => props.theme.color};
+const NavRight = styled.div`
+    align-items: center;
+    display: flex;
+    flex-direction: column;
     font-size:0.75rem;
-    margin:12px 8px;
-    outline:none;
-    padding:6px;
-    width:100px;
+    justify-content: center;
+    margin:3px;
+    padding:3px;
     &:hover {
-        background:${props => props.theme.color};
-        color:${props => props.theme.background};
+        color: ${props => props.theme.icoHover}
         cursor: pointer;
+    }
+    
+    i {
+        padding:0;
+        margin:0;
+    }
+
+    small {
+      font-size:0.25rem;
     }
 `;
 
-const LoginPage = (props) => {
+const NavBar = (props) => {
     return (
-        <Wrapper>
+
+        <NavWrapper>
 
             <i className="fab fa-instagram fa-2x"></i>
-            <H1>INSTAGRANG</H1>
+            <NavH1>INSTAGRANG</NavH1>
 
-            <Input
-                className="far"
-                name="myName"
+            <NavInput
+                className="fa"
+                name="newSearch"
                 onChange={props.onChange}
-                placeholder="&#xf007; username"
+                placeholder="&#xf002; search"
                 type="text"
-                value={props.value}
                 required />
-            <Button onClick={props.logIn}>login</Button>
-        </Wrapper>
+
+            <NavRight>
+                {/* <i className="far fa-compass"></i>
+                <i className="far fa-heart"></i> */}
+                    <i className="far fa-user">{props.myName}</i>
+                    <small onClick={props.logOut}>(logout)</small>
+            </NavRight>
+
+        </NavWrapper>
     );
 }
 
-export default LoginPage;
+NavBar.defaultProps = {
+    theme: {
+        background:'magenta'
+    }
+}
+
+export default NavBar;
