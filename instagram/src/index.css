@@ -1,16 +1,201 @@
-body {
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
   margin: 0;
   padding: 0;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
-    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-
-  background:black;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
-    monospace;
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+  display: block;
 }
+
+body {
+  line-height: 1;
+}
+
+ol, ul {
+  list-style: none;
+}
+
+blockquote, q {
+  quotes: none;
+}
+
+blockquote:before, blockquote:after,
+q:before, q:after {
+  content: "";
+  content: none;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+/* .App-logo {
+  animation: App-logo-spin infinite 20s linear;
+  height: 40vmin;
+  pointer-events: none;
+}
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+} */
+body {
+  background: black;
+}
+
+.App {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  font-family: "Source Code Pro", monospace;
+  justify-content: center;
+  margin: 0 auto;
+  max-width: 80%;
+}
+
+.nav {
+  align-items: center;
+  background: white;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  max-width: 640px;
+  margin: 12px 8px;
+  width: 100%;
+}
+.nav h1 {
+  font-size: 2rem;
+  margin: 12px 8px;
+}
+.nav i {
+  margin: 12px 8px;
+}
+.nav input {
+  border: 1px solid black;
+  margin: 12px 8px;
+  max-width: 35%;
+  outline: none;
+  padding: 6px;
+}
+.nav input:hover {
+  background: cyan;
+  color: magenta;
+  cursor: pointer;
+}
+.nav .nav-icons {
+  align-items: center;
+  display: flex;
+}
+.nav .nav-icons i {
+  margin: 12px 4px;
+}
+.nav .nav-icons i:hover {
+  color: magenta;
+  cursor: pointer;
+}
+.nav .nav-icons strong {
+  font-size: 0.75rem;
+  font-weight: bold;
+  margin: 12px 8px 12px 0;
+}
+.nav .nav-icons strong:hover {
+  color: magenta;
+  cursor: pointer;
+}
+
+.post {
+  /* border:1px solid cyan; */
+  background: white;
+  margin: 12px 0;
+  padding-bottom: 12px;
+  line-height: 1.5;
+  display: flex;
+  flex-direction: column;
+}
+.post h2, .post h3 {
+  color: black;
+  font-size: 0.75rem;
+  font-weight: bold;
+  margin: 0 8px;
+}
+.post header {
+  align-items: center;
+  display: flex;
+  margin: 12px 8px;
+}
+.post i {
+  margin: 12px 8px;
+}
+.post i:hover {
+  color: magenta;
+  cursor: pointer;
+}
+.post img {
+  max-width: 100%;
+}
+.post img.thumbnail {
+  border-radius: 50%;
+  width: 24px;
+}
+.post .time-stamp {
+  color: grey;
+  font-size: 0.33rem;
+  margin: 0 8px;
+}
+
+.comment-section .comment p {
+  /* align-items:center; */
+  color: black;
+  /* display:flex; */
+  font-size: 0.75rem;
+  margin: 6px 8px;
+  padding: 0;
+}
+.comment-section .comment strong {
+  font-weight: bold;
+  font-size: 0.75rem;
+}
+.comment-section form {
+  border-top: 1px solid grey;
+  display: flex;
+  margin: 6px 8px;
+}
+.comment-section input[type=text] {
+  border: 0;
+  outline: none;
+  padding: 6px 0;
+  width: 100%;
+}
+.comment-section input[type=text]:hover {
+  background: cyan;
+  color: magenta;
+  cursor: pointer;
+}
+
+/*# sourceMappingURL=index.css.map */

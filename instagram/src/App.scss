@@ -12,13 +12,17 @@
   }
 } */
 
+body {
+  background:black;
+}
+
 
 .App {
   align-items: center;
-  /* background-color: #282c34; */
-  /* border:1px solid red; */
+  // border:1px solid red;
   display: flex;
   flex-direction: column;
+  font-family: 'Source Code Pro', monospace;
   justify-content: center;
   margin: 0 auto;
   max-width:80%;

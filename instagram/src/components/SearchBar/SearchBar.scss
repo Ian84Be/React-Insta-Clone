@@ -10,6 +10,7 @@
     width:100%;
 
   h1 {
+    font-size:2rem;
     margin:12px 8px;
   }
 
@@ -18,7 +19,8 @@
   }
 
   input {
-    border:1px solid black;
+    border:2px dashed black;
+    font-size:0.75rem;
     margin:12px 8px;
     max-width:35%;
     outline:none;
@@ -42,16 +44,28 @@
       }
     }
 
-    strong {
+    .logout {
+      align-items:center;
+      // border:1px solid red;
+      display:flex;
+      flex-direction: column;
       font-size:0.75rem;
-      margin:12px 8px 12px 0;
+      justify-content: center;
+      margin:3px;
+      padding:3px;
       &:hover {
-        color:magenta;
-        cursor: pointer;
+          color:magenta;
+          cursor: pointer;
+      }
+      i {
+        // border:1px solid cyan;
+        margin:0;
+      }
+
+      small {
+        // border:1px solid blue;
+        font-size:0.25rem;
       }
     }
   }
-
-  
-
 }

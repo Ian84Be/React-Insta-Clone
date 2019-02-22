@@ -1,0 +1,13 @@
+.login-button {
+    border:1px solid black;
+    font-size:0.75rem;
+    margin:12px 8px;
+    outline:none;
+    padding:6px;
+    width:100px;
+    &:hover {
+        background:cyan;
+        color:magenta;
+        cursor: pointer;
+    }
+}
