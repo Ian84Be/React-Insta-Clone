@@ -3,43 +3,38 @@ import propTypes from 'prop-types';
 import styled from 'styled-components';
 
 const Wrapper = styled.div`
-
-        h3 {
-            font-size:0.75rem;
-            margin: 0 8px;
-        }
-
-        .comment {
-            border:1px solid ${props => props.theme.color};
-            border-bottom:4px solid ${props => props.theme.color};;
-            border-left:0;
-            border-radius: ${props => props.theme.borderRadiusAlt};
-            font-size:0.75rem;
-            margin:${props => props.theme.margin};
-            padding:0;
-
-            strong {
-            background: ${props => props.theme.color};
-            border-radius: ${props => props.theme.borderRadius};
-            color: ${props => props.theme.background};
-            font-weight:bold;
-            font-size:0.75rem;
-            padding:6px;;
-            }
-        }
-
     form {
-        border-top:1px solid ${props => props.theme.color};
         display:flex;
+    }
+`;
+
+const Comment = styled.div`
+    border:1px solid ${props => props.theme.color};
+    /* border-top:0; */
+    /* border-right:0; */
+    border-left:0;
+    /* border-radius: ${props => props.theme.borderRadiusAlt}; */
+    border-radius: 4px 4px 0 0;
+    font-size:0.75rem;
+    margin: 0 8px 8px;
+
+    strong {
+        background: ${props => props.theme.color};
+        border-radius: 4px 0 0 0;
+        color: ${props => props.theme.background};
+        font-weight:bold;
+        font-size:0.75rem;
+        padding:4px;
     }
 `;
 
 const Input = styled.input`
     border:1px solid ${props => props.theme.color};
-    border-radius: ${props => props.theme.borderRadius};
+    border-radius: ${props => props.theme.borderRadiusRoundBottom};
     color: ${props => props.theme.background};
     font-size:0.75rem;
-    margin:${props => props.theme.margin};
+    /* margin:${props => props.theme.margin}; */
+    margin: 0 8px 0 8px;
     outline:none;
     padding:6px 4px;
     width:100%;
@@ -49,56 +44,48 @@ const Input = styled.input`
     }
 `;
 
-class CommentSection extends Component {
+const LikeBar = styled.div`
+    align-items:baseline;
+    display:flex;
+
+    h3 {
+        font-size:1rem;
+    }
+
+    i {
+        margin:12px 10px;
+        &:hover {
+            color: ${props => props.theme.icoHover};
+            cursor: pointer;
+        }
+    }
+`;
+
+export default class CommentSection extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            comments: props.comments,
-            likes: props.likes,
-            myName: props.myName,
+            comments: this.props.comments,
+            likes: this.props.likes,
             newComment: '',
-            onChange: props.onChange,
         };
-    }
-
-    formHandler = e => {
-        this.setState({
-            [e.target.name]: e.target.value,
-        })
-    }
-
-    addComment = e => {
-        e.preventDefault();
-        let myComment = {
-            text: this.state.newComment,
-            username: this.state.myName
-        }
-        this.setState({
-            comments: [...this.state.comments, myComment],
-            newComment: '',
-        });
-    }
-
-    addLike = e => {
-        this.setState({
-            likes: this.state.likes + 1,
-        })
     }
 
     render() {
         return (
             <Wrapper>
-                <i className="far fa-heart" onClick={this.addLike}></i>
-                {/* <i className="far fa-comment"></i> */}
+                <LikeBar>
+                    <i className="far fa-heart" onClick={this.addLike}></i>
+                    <h3>{this.state.likes} likes</h3>
+                </LikeBar>
 
-                <h3>{this.state.likes} likes</h3>
-
-                {this.state.comments.map((comment, index) => {
+                {this.state.comments.map(comment => {
+                    const myKey = Date.now() * Math.random();
                     return (
-                        <div className="comment" key={index}>
+                        <Comment key={myKey}>
                             <strong>{comment.username}</strong>
                                 &nbsp;{comment.text}
-                        </div>
+                        </Comment>
                     )
                 })}
 
@@ -114,10 +101,32 @@ class CommentSection extends Component {
 
             </Wrapper>
         );
+    } // render() END
+
+    formHandler = e => {
+        this.setState({
+            [e.target.name]: e.target.value,
+        });
     }
 
+    addComment = e => {
+        e.preventDefault();
+        let myComment = {
+            text: this.state.newComment,
+            username: this.props.myName,
+        }
+        this.setState(prevState => ({
+            comments: [...prevState.comments, myComment],
+            newComment: '',
+        }));
+    }
 
-}
+    addLike = e => {
+        this.setState(prevState => ({
+            likes: prevState.likes + 1,
+        }));
+    }
+} // CommentSection COMPONENT END
 
 CommentSection.propTypes = {
     text: propTypes.string.isRequired,
@@ -128,5 +137,3 @@ CommentSection.defaultProps = {
     text: '',
     username: '',
 }
-
-export default CommentSection;

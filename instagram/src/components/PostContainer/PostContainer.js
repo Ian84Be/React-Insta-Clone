@@ -1,3 +1,4 @@
+
 import React from 'react';
 import propTypes from 'prop-types';
 import styled from 'styled-components';
@@ -8,7 +9,7 @@ const Post = styled.div`
     background: ${props => props.theme.background};
     border: ${props => props.theme.elementBorder};
     border-radius: ${props => props.theme.borderRadius};
-    box-shadow: ${props => props.theme.boxShadow}
+    box-shadow: ${props => props.theme.boxShadow};
     margin:12px 0;
     max-width: ${props => props.theme.maxWidth};
     padding-bottom:12px;
@@ -17,19 +18,11 @@ const Post = styled.div`
     flex-direction: column;
     width:100%;
 
-    i {
-        margin: ${props => props.theme.margin};
-        &:hover {
-            color: ${props => props.theme.icoHover}
-            cursor: pointer;
-        }
-    }
-
     img {
+        border-bottom:1px solid ${props => props.theme.color};
         max-width:100%;
         &.thumbnail {
-            border-radius:50%;
-            width:24px;
+            border:0;
         }
     }
 `;
@@ -55,16 +48,26 @@ const PostHeader = styled.header`
 `;
 
 const TimeStamp = styled.div`
+    /* background: ${props => props.theme.color}; */
+    border:1px solid ${props => props.theme.color};
+    border-top:0;
+    border-radius: ${props => props.theme.borderRadiusRoundBottom};
     color: ${props => props.theme.color};
     font-size:0.33rem;
+    font-weight:bold;
     margin:0 8px;
+    padding:4px;
+    width:30%;
 `;
+
+// START POST CONTAINER
 
 const PostContainer = (props) => {
     return (
         props.posts.map(post => {
+            const myKey = Date.now() * Math.random();
             return (
-                <Post key={post.timestamp}>
+                <Post key={myKey}>
 
                     <PostHeader>
                         <img className="thumbnail" src={post.thumbnailUrl} alt="y" />
@@ -72,18 +75,16 @@ const PostContainer = (props) => {
                     </PostHeader>
 
                     <img src={post.imageUrl} alt="x" />
+                    <TimeStamp>{post.timestamp}</TimeStamp>
 
                     <CommentSection
                         comments={post.comments}
                         likes={post.likes}
                         myName={props.myName}
                         newComment={post.newComment}
-                        onChange={props.onChange}
                         onClick={props.onClick}
                         onSubmit={props.onSubmit}
                     />
-
-                    <TimeStamp>{post.timestamp}</TimeStamp>
 
                 </Post>
             )
