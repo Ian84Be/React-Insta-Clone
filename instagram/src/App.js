@@ -1,3 +1,4 @@
+
 import React, { Component } from 'react';
 import styled, {ThemeProvider} from 'styled-components';
 
@@ -10,7 +11,8 @@ const mainTheme = {
   background: 'palevioletred',
   borderRadius: '0 0 0 4px',
   borderRadiusAlt: '0 4px 0 0',
-  boxShadow: '4px 6px black',
+  borderRadiusRoundBottom:'0 0 4px 4px',
+  boxShadow: '2px 3px black',
   color: 'papayawhip',
   elementBorder: '1px solid black',
   icoHover: 'black',
@@ -23,7 +25,6 @@ const mainTheme = {
 const AppWrapper = styled.div`
   align-items: center;
   background: papayawhip;
-  /* border:1px solid red; */
   color: papayawhip;
   display: flex;
   flex-direction: column;
@@ -33,23 +34,60 @@ const AppWrapper = styled.div`
   max-width:80%;
 `;
 
-class App extends Component {
+// APP STARTS
+
+export default class App extends Component {
   state = {
     filteredPosts: [],
     posts: [],
     myName: '',
   };
 
-  changeHandler = e => {
+  componentDidMount() {
     this.setState({
-      [e.target.name]: e.target.value
+      myName: localStorage.getItem('user'),
+      posts: dummyData,
     });
   }
 
-  componentDidMount() {
+  render() {
+    return (
+      <AppWrapper>
+{/* IF USER, return the app */}
+        {localStorage.getItem('user') ?
+          <>
+          <ThemeProvider theme={mainTheme}>
+            <NavBar
+              logOut={this.logOut}
+              myName={this.state.myName}
+              onChange={this.searchHandler}
+              />
+              </ThemeProvider>
+
+              <ThemeProvider theme={mainTheme}>
+            <PostContainer
+              myName={this.state.myName}
+              posts={
+                this.state.filteredPosts.length > 0
+                ? this.state.filteredPosts
+                : this.state.posts
+              } />
+              </ThemeProvider>
+          </>
+// NO USER FOUND, return login page
+          : <ThemeProvider theme={mainTheme}>
+          <LoginPage
+            logIn={this.logIn}
+            onChange={this.changeHandler}
+            value={this.state.myName}
+          /></ThemeProvider>}
+      </AppWrapper>
+    );
+  } // render() END
+
+  changeHandler = e => {
     this.setState({
-      posts: dummyData,
-      myName: localStorage.getItem('user'),
+      [e.target.name]: e.target.value
     });
   }
 
@@ -64,51 +102,9 @@ class App extends Component {
     window.location.reload();
   }
 
-  onMouseOver = e => {
-    e.preventDefault();
-    e.stopPropagation();
-    console.log(e.target.classList);
-    e.target.classList.toggle('hidden');
-  }
-
   searchHandler = e => {
     let posts = this.state.posts.filter(post => post.username.includes(e.target.value));
     this.setState({ filteredPosts: posts });
   }
 
-  render() {
-    return (
-      <AppWrapper>
-        {/* if user is logged in, return the app, otherwise return login page */}
-        {localStorage.getItem('user') ?
-          <>
-          <ThemeProvider theme={mainTheme}>
-            <NavBar
-              logOut={this.logOut}
-              myName={this.state.myName}
-              onChange={this.searchHandler}
-              onMouseOver={this.onMouseOver}
-              />
-              </ThemeProvider>
-
-              <ThemeProvider theme={mainTheme}>
-            <PostContainer
-              myName={this.state.myName}
-              posts={
-                this.state.filteredPosts.length > 0
-                ? this.state.filteredPosts
-                : this.state.posts
-              } />
-              </ThemeProvider>
-          </>
-          : <ThemeProvider theme={mainTheme}>
-          <LoginPage
-            logIn={this.logIn}
-            onChange={this.changeHandler}
-            value={this.state.myName}
-          /></ThemeProvider>}
-      </AppWrapper>
-    );
-  }
-}
-export default App;
+}//APP END

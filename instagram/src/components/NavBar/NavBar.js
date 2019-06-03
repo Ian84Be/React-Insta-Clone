@@ -11,7 +11,7 @@ const NavWrapper = styled.header`
     display:flex;
     flex-wrap: wrap;
     justify-content: space-evenly;
-    max-width: ${props => props.theme.maxWidth}
+    max-width: ${props => props.theme.maxWidth};
     margin: ${props => props.theme.margin};
     width:100%;
 
@@ -28,7 +28,7 @@ const NavH1 = styled.h1`
 
 const NavInput = styled.input`
     border:1px solid ${props => props.theme.color};
-    border-radius: ${props => props.theme.borderRadius}
+    border-radius: ${props => props.theme.borderRadius};
     color: ${props => props.theme.background};
     font-size:0.75rem;
     margin:${props => props.theme.margin};
@@ -49,7 +49,7 @@ const NavRight = styled.div`
     margin:3px;
     padding:3px;
     &:hover {
-        color: ${props => props.theme.icoHover}
+        color: ${props => props.theme.icoHover};
         cursor: pointer;
     }
     
@@ -62,6 +62,8 @@ const NavRight = styled.div`
       font-size:0.25rem;
     }
 `;
+
+// NAVBAR START
 
 const NavBar = (props) => {
     return (

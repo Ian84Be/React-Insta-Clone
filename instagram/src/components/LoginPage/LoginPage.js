@@ -1,5 +1,4 @@
 import React from 'react';
-// import './LoginPage.scss';
 import styled from 'styled-components';
 
 const Wrapper = styled.header`
@@ -12,24 +11,24 @@ const Wrapper = styled.header`
     display:flex;
     flex-wrap: wrap;
     justify-content: space-evenly;
-    max-width: ${props => props.theme.maxWidth}
+    max-width: ${props => props.theme.maxWidth};
     margin: ${props => props.theme.margin};
     width:100%;
+
+    h1 {
+        font-size:2rem;
+        margin:${props => props.theme.margin};
+        text-shadow: ${props => props.theme.textShadow};
+    }
 
     i {
         margin: ${props => props.theme.margin};
     }
 `;
 
-const H1 = styled.h1`
-    font-size:2rem;
-    margin:${props => props.theme.margin};
-    text-shadow: ${props => props.theme.textShadow};
-`;
-
 const Input = styled.input`
     border:1px solid ${props => props.theme.color};
-    border-radius: ${props => props.theme.borderRadius}
+    border-radius: ${props => props.theme.borderRadius};
     color: ${props => props.theme.background};
     font-size:0.75rem;
     margin:${props => props.theme.margin};
@@ -63,7 +62,7 @@ const LoginPage = (props) => {
         <Wrapper>
 
             <i className="fab fa-instagram fa-2x"></i>
-            <H1>INSTAGRANG</H1>
+            <h1>INSTAGRANG</h1>
 
             <Input
                 className="far"
